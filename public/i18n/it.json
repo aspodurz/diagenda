@@ -1,0 +1,108 @@
+{
+  "app": {
+    "title": "BTools",
+    "version": "1.0.0",
+    "home": {
+      "title": "Home"
+    },
+    "refractometer": {
+      "title": "Rifrattometro",
+      "measured-gravity": "Densità Misurata",
+      "wcf": "Fattore Correzione Mosto",
+      "fermented": "Fermentato",
+      "original-gravity": "Densità Iniziale",
+      "gravity": "Densità:",
+      "fixed-brix":"Densità corretta:",
+      "attenuation":"Attenuazione:",
+      "apparent-attenuation":"Attenuazione Apparente:",
+      "abv":"ABV:",
+      "percentage":"%",
+      "dialog":{
+        "load":{
+          "title":"Letture Precedenti",
+          "id":"ID",
+          "name":"Nome",
+          "gravity":"Densità",
+          "wcf":"FCM",
+          "actions":"Azioni"
+        },
+        "save":{
+          "title":"Salva lettura",
+          "subtitle": "Nome della tua birra?",
+          "field":"Beer Name"
+        }
+      }
+    },
+    "priming": {
+      "title": "Priming",
+      "target": "Obiettivo (volumi)",
+      "target-value": "Valore di obiettivo errato",
+      "target-required": "Obiettivo è <strong>richiesto</strong>",
+      "beer-style": "Stile della birra",
+      "sugar": "Zucchero (g)",
+      "sugar-value": "Valore di zucchero errato",
+      "sugar-required": "Zucchero è <strong>richiesto</strong>",
+      "water": "Acqua (ml)",
+      "water-value": "Valore di acqua errato",
+      "water-required": "Acqua è <strong>richiesta</strong>",
+      "temperature": "Temperatura °C",
+      "temperature-value": "Valore di temperatura errato",
+      "temperature-required": "Temperatura è <strong>richiesta</strong>",
+      "bottling-volume": "Volume di imbottigliamento (l)",
+      "bottling-volume-value": "Valore di Volume di imbottigliamento errato",
+      "bottling-volume-required": "Volume di imbottigliamento è <strong>richiesta</strong>",
+      "data": "Dati",
+      "solution-volume": "Volume Soluzione",
+      "concentration": "Concentrazione",
+      "dissolved-carbonation": "Carbonazione Disciolta",
+      "required-carbonation": "Carbonazione Richiesta",
+      "volume": "Volume",
+      "quantity": "Quantità",
+      "volumes-co2": "volumi di CO<sub>2</sub>",
+      "doses": "Dosi"
+    }, 
+    "setting": {
+      "title": "Impostazioni",
+      "language": "Lingua"
+    },
+    "about": {
+      "title": "Info"
+    },
+    "units": {
+      "sg":"SG",
+      "brix":"Brix",
+      "plato":"°P",
+      "g": "g",
+      "ml": "ml",
+      "gml": "g/ml"
+    },
+    "styles":{
+      "volumes":{
+        "custom": "Personalizzata ({{min}} - {{max}})",
+        "american-ale": "Ale Americana ({{min}} - {{max}})",
+        "american-lager": "Lager Americana ({{min}} - {{max}})",
+        "british-ale": "Ale Britannica ({{min}} - {{max}})",
+        "european-ale": "Ale Europea ({{min}} - {{max}})",
+        "european-lager": "Lager Europea ({{min}} - {{max}})",
+        "belgian-ale": "Ale Belga({{min}} - {{max}})",
+        "wheat-beer": "Birra di Frumento ({{min}} - {{max}})",
+        "belgian-lambic": "Lambic Belga ({{min}} - {{max}})",
+        "belgian-wit": "Wit Belga ({{min}} - {{max}})",
+        "water": "Acqua ({{min}} - {{max}})"
+      }
+    },
+    "languages":{
+      "en":"Inglese",
+      "it":"Italiano"
+    },
+    "button": {
+      "import": "Importa",
+      "export": "Esporta",
+      "reset": "Reset",
+      "load": "Carica",
+      "save": "Salva",
+      "ok": "Ok",
+      "close": "Chiudi"
+    }
+  }
+}

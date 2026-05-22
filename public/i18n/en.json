@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Diagenda",
+    "version": "1.0.0",
+    "home": {
+      "title": "Home"
+    },
+    "viewer": {
+      "title": "Viewer"
+    },
+    "setting": {
+      "title": "Setting",
+      "language": "Language"
+    },
+    "about": {
+      "title": "About"
+    },
+    "languages":{
+      "en":"English",
+      "it":"Italian"
+    },
+    "button": {
+      "import": "Import",
+      "export": "Export",
+      "reset": "Reset",
+      "load": "Load",
+      "save": "Save",
+      "ok": "Ok",
+      "close": "Close"
+    }
+  }
+}

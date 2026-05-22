@@ -1,0 +1,24 @@
+<div class="setting-form">
+    <div class="item-container">
+        <mat-form-field>
+            <mat-label>{{ 'app.setting.language' | translate }}</mat-label>
+            <mat-select name="target" matInput id="target" [formControl]="languageFormControl" (ngModelChange)="changeLanguage()">
+              @for (language of getLanguages(); track language) {
+                <mat-option [value]="language.id" select>{{ language.label | translate }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div class="item-container">
+       <button type="button" mat-raised-button (click)="fileInput.click()">{{ 'app.button.import' | translate }}</button>
+       <input hidden (change)="importSelectedData($event)" #fileInput type="file">
+       <span class="file-name">{{selectedFile?.name}}</span>
+
+    </div>
+    <div class="item-container" >
+        <button mat-raised-button (click)="exportSelectedData()">{{ 'app.button.export' | translate }}</button>
+    </div>
+    <div class="item-container" >
+        <button mat-raised-button (click)="resetData()">{{ 'app.button.reset' | translate }}</button>
+    </div>
+</div>
