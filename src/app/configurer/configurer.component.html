@@ -1,0 +1,9 @@
+<form class="configurer-form">
+    <div class="item-container">
+        <button mat-raised-button [routerLink]="['/planner-component']" [queryParams]="{ action: 'add' }">{{ 'app.button.add' | translate }}</button>
+    </div>
+    <div class="item-container">
+        <button mat-raised-button [routerLink]="['/planner-component']" [queryParams]="{ action: 'edit' }">{{ 'app.button.edit' | translate }}</button>
+    </div>
+</form>
+

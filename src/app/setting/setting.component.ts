@@ -3,17 +3,20 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-//import { Configuration, ConfigurationElement } from '../dto/configuration';
+
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-//import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
-//import { Platform } from '@ionic/angular';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Platform } from '@ionic/angular';
 //import { AppComponent } from '../app.component';
 import { BaseService } from '../service/base.service';
 import { SecureStoreService } from '../service/store.service';
 import { LanguageConstants, StoreConstants } from '../utils/constants.component';
+import { ConfigurationDto } from '../dto/configuration';
+import { ConfigDataDto } from '../dto/config.data';
+import { PlanDto } from '../dto/plan';
 
 interface LanguageData {
   id: string;
@@ -28,13 +31,13 @@ const LANGUAGES: LanguageData[] = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslatePipe, TranslateDirective, FormsModule, MatFormFieldModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [TranslatePipe, FormsModule, MatFormFieldModule, MatButtonModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './setting.component.html',
   styleUrl: './setting.component.scss',
   providers: [DatePipe]
 })
 export class SettingComponent implements AfterViewInit {
-  //platform = inject(Platform);
+  platform = inject(Platform);
   selectedFile: any = null;
   language: string;
   languageFormControl;
@@ -72,30 +75,44 @@ export class SettingComponent implements AfterViewInit {
         const data=await this.selectedFile.text();
         const res = JSON.parse(data).elements;
         if(res.length>0){
-          //await this.storeservice.clear();
+          let config: ConfigurationDto=new ConfigurationDto();
+          await this.storeService.clear();
           for(let i=0; i<res.length; i++){
-            //await this.storeservice.setItem(res[i].key, res[i].value);
+            let plan:PlanDto= res.elements.at(i);
+            const pdata=JSON.stringify(plan, null, 2);
+            const key=plan.key?? '';
+            await this.storeService.setItem(key, pdata);
+            config.add(key);
           }
+          const cdata=JSON.stringify(config, null, 2);
+          await this.storeService.setItem(StoreConstants.CONFIGURATIONS_KEY, cdata);
           console.log("importing file : ",data );
         }
     }
   }
 
   async createExportData(): Promise<string>{
-    //const content=await this.storeservice.getAllKeysValues();
-    //let config: Configuration=new Configuration();
-    //for(let i=0; i<content.length; i++){
-    //  config.add(new ConfigurationElement(content[i].key, content[i].value));
-    //}
-    //console.log(config);
-    //const data=JSON.stringify(config, null, 2);
-    const data='';
+    let config: ConfigurationDto=new ConfigurationDto();
+    const df=JSON.stringify(config, null, 2);
+    const content=await this.storeService.getItemDefault(StoreConstants.CONFIGURATIONS_KEY, df);
+    config = JSON.parse(df).elements;
+    let configData: ConfigDataDto=new ConfigDataDto();
+    for(let i=0; i<content.length; i++){
+      const element = config.elements.at(i);
+      if(element!==undefined){
+        const content=await this.storeService.getItem(element);
+        let plan:PlanDto=JSON.parse(content);
+        configData.add(plan);
+      }
+    }
+    console.log(configData);
+    const data=JSON.stringify(configData, null, 2);
     return data;
   }
 
   async getFileName(): Promise<string>{
     const date =this.datepipe.transform(new Date(), 'yyyyMMddHHmmssSSS');
-    const filename='btools-export_'+date+'.json';
+    const filename='diagenda-export_'+date+'.json';
     return filename;
   }
 
@@ -103,22 +120,22 @@ export class SettingComponent implements AfterViewInit {
     
     const data=await this.createExportData();
     const filename=await this.getFileName();
-    //if(this.platform.is('desktop')){
-    //  console.log('browser');
-    //  await this.exportSelectedWebData(data, filename);
-    //} else{
-    //  console.log('other os detected');
-    //  await this.exportSelectedOtherData(data, filename);
-    //}
+    if(this.platform.is('desktop')){
+      console.log('browser');
+      await this.exportSelectedWebData(data, filename);
+    } else{
+      console.log('other os detected');
+      await this.exportSelectedOtherData(data, filename);
+    }
   }
 
   async exportSelectedOtherData(data: string, filename: string) {   
-    //await Filesystem.writeFile({
-    //  path: filename,
-    //  data: data,
-    //  directory: Directory.External,
-    //  encoding: Encoding.UTF8,
-    //});
+    await Filesystem.writeFile({
+      path: filename,
+      data: data,
+      directory: Directory.External,
+      encoding: Encoding.UTF8,
+    });
   };
 
   async exportSelectedWebData(data: string, filename: string) {
@@ -132,7 +149,7 @@ export class SettingComponent implements AfterViewInit {
   }
 
   async resetData() {
-      //await this.storeservice.clear();
+      await this.storeService.clear();
   }
 
 }

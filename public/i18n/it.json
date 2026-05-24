@@ -5,6 +5,14 @@
     "home": {
       "title": "Home"
     },
+    "configurer": {
+      "title": "Configuratore",
+      "stepper": {
+        "plan": "Piano",
+        "meals": "Pasti",
+        "options": "Opzioni"
+       }
+    },
     "viewer": {
       "title": "Visualizzatore"
     },
@@ -25,6 +33,9 @@
       "reset": "Reset",
       "load": "Carica",
       "save": "Salva",
+      "add": "Aggiungi",
+      "edit": "Modifica",
+      "delete": "Elimina",
       "ok": "Ok",
       "close": "Chiudi"
     }

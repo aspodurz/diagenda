@@ -1,0 +1,14 @@
+<section class="plan-stepper-container">
+  <header>
+    <h2>{{ stepTitles.at(selectedIndex) | translate }}</h2>
+    <h2>{{ item().key }} - {{ isNextDisabled() }}</h2>
+  </header>
+
+  <div [ngTemplateOutlet]="selected ? selected.content : null"></div>
+
+  <footer class="plan-stepper-step-navigation-bar">
+    <button class="plan-stepper-nav-button" cdkStepperPrevious>&larr;</button>
+
+    <button class="plan-stepper-nav-button" [disabled]="isNextDisabled()" cdkStepperNext>&rarr;</button>
+  </footer>
+</section>

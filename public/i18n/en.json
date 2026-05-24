@@ -5,6 +5,14 @@
     "home": {
       "title": "Home"
     },
+    "configurer": {
+      "title": "Configurer",
+      "stepper": {
+        "plan": "Plan",
+        "meals": "Meals",
+        "options": "Options"
+      }
+    },
     "viewer": {
       "title": "Viewer"
     },
@@ -25,6 +33,9 @@
       "reset": "Reset",
       "load": "Load",
       "save": "Save",
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
       "ok": "Ok",
       "close": "Close"
     }

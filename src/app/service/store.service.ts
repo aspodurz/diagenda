@@ -79,4 +79,17 @@ export class SecureStoreService {
         return Promise.reject(new Error("setItem: Must give a key"));
       }
     } 
+
+    /**
+     * Clar all Keys
+     */
+    async clear(): Promise<void> {
+      try {
+          await SecureStoragePlugin.clear();
+          return Promise.resolve();
+        } catch (err) {
+          return Promise.reject(err);
+        } 
+    }
+
   }
