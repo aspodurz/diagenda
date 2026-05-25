@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { PlanDto } from '../dto/plan';
 import { PlanStepper } from '../utils/stepper/plan.stepper';
 import { Plan } from './plan/plan';
+import { Meals } from './meals/meals';
+
 
 @Component({
   selector: 'app-planner',
@@ -24,7 +26,8 @@ import { Plan } from './plan/plan';
     MatFormFieldModule,
     MatInputModule,
     PlanStepper,
-    Plan
+    Plan,
+    Meals
   ],
   templateUrl: './planner.component.html',
   styleUrl: './planner.component.scss',

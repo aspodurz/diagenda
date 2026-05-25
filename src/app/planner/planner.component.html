@@ -2,38 +2,8 @@
   action: {{ action }}
   <plan-stepper [item]="plan">
   <cdk-step> <planner-plan [item]="plan"> </planner-plan> </cdk-step>
-  <cdk-step> <p>This is any content of "Step 2"</p> </cdk-step>
+  <cdk-step> <planner-meals [item]="plan"> </planner-meals> </cdk-step>
   <cdk-step> <p>This is any content of "Step 3"</p> </cdk-step>
   </plan-stepper>
-  <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step>
-        <ng-template matStepLabel>{{ 'app.planner.plan' | translate }}</ng-template>
-        <mat-form-field>
-          <mat-label>{{ 'app.planner.key' | translate }}</mat-label>
-          <input matInput placeholder="{{ 'app.planner.key.ph' | translate }}" [(ngModel)]="plan.key" required>
-        </mat-form-field>
-        <div>
-          <button matButton matStepperNext>Next</button>
-        </div>
-    </mat-step>
-    <mat-step label="Fill out your address">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" required>
-        </mat-form-field>
-        <div>
-          <button matButton matStepperPrevious>Back</button>
-          <button matButton matStepperNext>Next</button>
-        </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button matButton matStepperPrevious>Back</button>
-        <button matButton (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
 </div>
 

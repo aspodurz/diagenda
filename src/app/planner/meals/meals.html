@@ -1,1 +1,29 @@
-<p>meals works!</p>
+<div ngAccordionGroup class="material-accordion meals-container" [multiExpandable]="false">
+  @for (meal of item().meals; track meal; let index = $index) {
+  <h3>
+    <span ngAccordionTrigger [panel]="panel" #trigger="ngAccordionTrigger">
+      <mat-form-field class="field-full-width">
+        <mat-label>{{ 'app.planner.key' | translate }}</mat-label>
+        <input matInput placeholder="{{ 'app.meals.description.ph' | translate }}" [(ngModel)]="meal.description" required>
+      </mat-form-field>
+      <span
+        aria-hidden="true"
+        class="material-symbols-outlined expand-icon"
+        [class.expand-icon__expanded]="trigger.expanded()"
+        translate="no"
+        >keyboard_arrow_up</span
+      >
+    </span>
+  </h3>
+  <div ngAccordionPanel #panel="ngAccordionPanel">
+    <ng-template ngAccordionContent>
+      <p>
+        {{ meal.description }}
+      </p>
+    </ng-template>
+  </div>
+  }
+  <div class="item-container">
+      <button mat-raised-button (click)="addMeal()" >{{ 'app.button.add' | translate }}</button>
+  </div>
+</div>
