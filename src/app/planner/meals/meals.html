@@ -1,11 +1,16 @@
-<div ngAccordionGroup class="material-accordion meals-container" [multiExpandable]="false">
-  @for (meal of item().meals; track meal; let index = $index) {
+<div ngAccordionGroup class="material-accordion meals-container" [multiExpandable]="true">
+  @for (meal of plan().meals; track meal; let index = $index) {
+  <div class="item-container">
+    <mat-form-field class="field-full-width">
+      <mat-label>{{ 'app.planner.meals.name' | translate }}</mat-label>
+      <input matInput placeholder="{{ 'app.planner.meals.ph.name' | translate }}" [(ngModel)]="meal.name" required>
+    </mat-form-field>
+  
+    <button mat-raised-button (click)="deleteMeal(index)" class="right-item">{{ 'app.button.remove.meal' | translate }}</button>
+  </div>
   <h3>
     <span ngAccordionTrigger [panel]="panel" #trigger="ngAccordionTrigger">
-      <mat-form-field class="field-full-width">
-        <mat-label>{{ 'app.planner.key' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'app.meals.description.ph' | translate }}" [(ngModel)]="meal.description" required>
-      </mat-form-field>
+      {{ meal.name }} {{ 'app.planner.meals.options' | translate }} - {{ meal.options.length }}
       <span
         aria-hidden="true"
         class="material-symbols-outlined expand-icon"
@@ -17,13 +22,24 @@
   </h3>
   <div ngAccordionPanel #panel="ngAccordionPanel">
     <ng-template ngAccordionContent>
-      <p>
-        {{ meal.description }}
-      </p>
+      @for (option of meal.options; track option; let idx = $index) {
+        <div class="item-container">
+          <mat-form-field class="field-full-width">
+            <mat-label>{{ 'app.planner.meals.option.name' | translate }}</mat-label>
+            <textarea matInput placeholder="{{ 'app.planner.meals.option.ph.name' | translate }}" [(ngModel)]="option.name" required>
+            </textarea>
+          </mat-form-field>
+        
+          <button mat-raised-button (click)="deleteOption(index,idx)" class="right-item">{{ 'app.button.remove.option' | translate }}</button>
+        </div>
+      }
+      <div class="item-container-center">
+          <button mat-raised-button (click)="addOption(index)" >{{ 'app.button.insert.option' | translate }}</button>
+      </div>
     </ng-template>
   </div>
   }
   <div class="item-container">
-      <button mat-raised-button (click)="addMeal()" >{{ 'app.button.add' | translate }}</button>
+      <button mat-raised-button (click)="addMeal()" >{{ 'app.button.insert.meal' | translate }}</button>
   </div>
 </div>

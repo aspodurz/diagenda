@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
-//import { AppComponent } from '../app.component';
 import { BaseService } from '../service/base.service';
 import { SecureStoreService } from '../service/store.service';
 import { LanguageConstants, StoreConstants } from '../utils/constants.component';
@@ -73,14 +72,15 @@ export class SettingComponent implements AfterViewInit {
     if (input.files && input.files.length > 0) {
         this.selectedFile = input.files[0];
         const data=await this.selectedFile.text();
-        const res = JSON.parse(data).elements;
-        if(res.length>0){
+        const res = JSON.parse(data);
+        if(res.elements.length>0){
+          await this.storeService.clear();
           let config: ConfigurationDto=new ConfigurationDto();
           await this.storeService.clear();
-          for(let i=0; i<res.length; i++){
+          for(let i=0; i<res.elements.length; i++){
             let plan:PlanDto= res.elements.at(i);
             const pdata=JSON.stringify(plan, null, 2);
-            const key=plan.key?? '';
+            const key=plan.name?? '';
             await this.storeService.setItem(key, pdata);
             config.add(key);
           }
@@ -95,7 +95,7 @@ export class SettingComponent implements AfterViewInit {
     let config: ConfigurationDto=new ConfigurationDto();
     const df=JSON.stringify(config, null, 2);
     const content=await this.storeService.getItemDefault(StoreConstants.CONFIGURATIONS_KEY, df);
-    config = JSON.parse(df).elements;
+    config = JSON.parse(content);
     let configData: ConfigDataDto=new ConfigDataDto();
     for(let i=0; i<content.length; i++){
       const element = config.elements.at(i);

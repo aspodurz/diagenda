@@ -1,7 +1,7 @@
 import { OptionDto } from "./option";
 
 export class PlanDto{
-    key?: string;
+    name?: string;
     description?: string;
     owner?: string;
     meals: Array<Meal>=new Array;
@@ -16,7 +16,7 @@ export class PlanDto{
 }
 
 export class Meal{
-    description?: string;
+    name?: string;
     options: Array<OptionDto>=new Array;
 
     constructor(){

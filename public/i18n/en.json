@@ -10,7 +10,31 @@
       "stepper": {
         "plan": "Plan",
         "meals": "Meals",
-        "options": "Options"
+        "end": "End"
+      }
+    },
+    "planner": {
+      "title": "Planner",
+      "name": "Name",
+      "description": "Description",
+      "owner": "Owner",
+      "ph": {
+        "name": "Enter name",
+        "description": "Enter description",
+        "owner": "Enter owner"
+      },
+      "meals": {
+        "name": "Name",
+        "options": "Options",
+        "ph": {
+          "name": "Enter name"
+        },
+        "option": {
+          "name": "Name",
+          "ph": {
+            "name": "Enter name"
+          }
+        }
       }
     },
     "viewer": {
@@ -23,9 +47,9 @@
     "about": {
       "title": "About"
     },
-    "languages":{
-      "en":"English",
-      "it":"Italian"
+    "languages": {
+      "en": "English",
+      "it": "Italian"
     },
     "button": {
       "import": "Import",
@@ -37,7 +61,21 @@
       "edit": "Edit",
       "delete": "Delete",
       "ok": "Ok",
-      "close": "Close"
+      "close": "Close",
+      "back": "Back",
+      "insert": {
+        "plan": "Insert plan",
+        "meal": "Insert meal",
+        "option": "Insert option"
+      },
+      "remove": {
+        "plan": "Remove plan",
+        "meal": "Remove meal",
+        "option": "Remove option"
+      },
+      "store": {
+        "plan": "Save plan"
+       }
     }
   }
 }

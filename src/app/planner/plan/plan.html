@@ -1,14 +1,14 @@
 <div class="container-data">
     <mat-form-field class="field-full-width">
-        <mat-label>{{ 'app.planner.key' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'app.planner.key.ph' | translate }}" [(ngModel)]="item().key" required>
+        <mat-label>{{ 'app.planner.name' | translate }}</mat-label>
+        <input matInput placeholder="{{ 'app.planner.ph.name' | translate }}" [(ngModel)]="plan().name" [disabled]="mode() === 'edit'" planNameValidator required>
     </mat-form-field>
     <mat-form-field class="field-full-width">
         <mat-label>{{ 'app.planner.description' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'app.planner.description.ph' | translate }}" [(ngModel)]="item().description" required>
+        <input matInput placeholder="{{ 'app.planner.ph.description' | translate }}" [(ngModel)]="plan().description" required>
     </mat-form-field>
     <mat-form-field class="field-full-width">
         <mat-label>{{ 'app.planner.owner' | translate }}</mat-label>
-        <input matInput placeholder="{{ 'app.planner.owner.ph' | translate }}" [(ngModel)]="item().owner" required>
+        <input matInput placeholder="{{ 'app.planner.ph.owner' | translate }}" [(ngModel)]="plan().owner" required>
     </mat-form-field>
 </div>  

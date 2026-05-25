@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Meal, PlanDto } from '../../dto/plan';
+import { OptionDto } from '../../dto/option';
 
 
 
@@ -21,11 +22,21 @@ import { Meal, PlanDto } from '../../dto/plan';
   styleUrl: './meals.css',
 })
 export class Meals {
-  item = input.required<PlanDto>();
-  items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-  expandedIndex = 0;
+  plan = input.required<PlanDto>();
 
   addMeal(): void {
-    this.item().add(new Meal());
+    this.plan().add(new Meal());
+  }
+
+  addOption(index:number): void {
+    this.plan().meals[index].options.push(new OptionDto());
+  }
+
+  deleteMeal(index:number): void {
+    this.plan().meals.splice(index, 1);
+  }
+
+  deleteOption(index:number, idx:number): void {
+    this.plan().meals[index].options.splice(idx, 1);
   }
 }

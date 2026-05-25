@@ -1,0 +1,14 @@
+.end-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 5px;
+  }
+
+.item-container {
+    margin-top: 8px;
+  }
+
+.item-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }

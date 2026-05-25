@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SecureStoragePlugin } from 'capacitor-secure-storage-plugin';
+import { Observable } from "rxjs";
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 
 @Injectable()
 export class SecureStoreService {
@@ -90,6 +92,17 @@ export class SecureStoreService {
         } catch (err) {
           return Promise.reject(err);
         } 
+    }
+
+    validateName(control: AbstractControl): Observable<ValidationErrors | null> {
+      let itm: Observable<ValidationErrors | null> =new Observable(observer => {
+        this.hasItem(control.value)
+          .then((hasItem) => observer.next(hasItem ? {badInput: true} : null))
+          .catch(() => observer.next(null))
+          .finally(() => observer.complete());
+      });
+      console.log("in validateName ",itm);
+      return itm;
     }
 
   }

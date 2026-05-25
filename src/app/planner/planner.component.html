@@ -1,9 +1,8 @@
 <div class="plan-form">
-  action: {{ action }}
-  <plan-stepper [item]="plan">
-  <cdk-step> <planner-plan [item]="plan"> </planner-plan> </cdk-step>
-  <cdk-step> <planner-meals [item]="plan"> </planner-meals> </cdk-step>
-  <cdk-step> <p>This is any content of "Step 3"</p> </cdk-step>
+  <plan-stepper [plan]="plan" [mode]="mode">
+    <cdk-step> <planner-plan [plan]="plan" [mode]="mode" > </planner-plan> </cdk-step>
+    <cdk-step> <planner-meals [plan]="plan" > </planner-meals> </cdk-step>
+    <cdk-step> <planner-end [plan]="plan" > </planner-end> </cdk-step>
   </plan-stepper>
 </div>
 

@@ -5,15 +5,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
+import { PlanNameValidator } from '../../validator/plan.name.validator';
 
 
 @Component({
   selector: 'planner-plan',
-  imports: [TranslatePipe, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule],
+  imports: [TranslatePipe, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, PlanNameValidator],
   templateUrl: './plan.html',
   styleUrl: './plan.css',
 })
 export class Plan {
 
-  item = input.required<PlanDto>();
+  plan = input.required<PlanDto>();
+  mode = input.required<string>();
+
 }

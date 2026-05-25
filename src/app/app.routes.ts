@@ -5,11 +5,13 @@ import { AboutComponent } from './about/about.component';
 import { ConfigurerComponent } from './configurer/configurer.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { PlannerComponent } from './planner/planner.component';
+import { PlanLoaderComponent } from './plan.loader.component/plan.loader.component';
 
 export const routes: Routes = [
     { path: 'home-component', component: HomeComponent },
     { path: 'viewer-component', component: ViewerComponent },
     { path: 'configurer-component', component: ConfigurerComponent },
+    { path: 'plan-loader-component', component: PlanLoaderComponent },
     { path: 'planner-component', component: PlannerComponent},
     { path: 'setting-component', component: SettingComponent },
     { path: 'about-component', component: AboutComponent },

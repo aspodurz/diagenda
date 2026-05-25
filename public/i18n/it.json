@@ -10,8 +10,32 @@
       "stepper": {
         "plan": "Piano",
         "meals": "Pasti",
-        "options": "Opzioni"
-       }
+        "end": "Fine"
+      }
+    },
+    "planner": {
+      "title": "Planner",
+      "name": "Nome",
+      "description": "Descrizione",
+      "owner": "Proprietario",
+      "ph": {
+        "name": "Inserisci nome",
+        "description": "Inserisci descrizione",
+        "owner": "Inserisci proprietario"
+      },
+      "meals": {
+        "name": "Nome",
+        "options": "Opzioni",
+        "ph": {
+          "name": "Inserisci nome"
+        },
+        "option": {
+          "name": "Nome",
+          "ph": {
+            "name": "Inserisci nome"
+          }
+        }
+      }
     },
     "viewer": {
       "title": "Visualizzatore"
@@ -23,9 +47,9 @@
     "about": {
       "title": "Info"
     },
-    "languages":{
-      "en":"Inglese",
-      "it":"Italiano"
+    "languages": {
+      "en": "Inglese",
+      "it": "Italiano"
     },
     "button": {
       "import": "Importa",
@@ -37,7 +61,21 @@
       "edit": "Modifica",
       "delete": "Elimina",
       "ok": "Ok",
-      "close": "Chiudi"
+      "close": "Chiudi",
+      "back": "Indietro",
+      "insert": {
+        "plan": "Inserisci piano",
+        "meal": "Inserisci pasto",
+        "option": "Inserisci opzione"
+      },
+      "remove": {
+        "plan": "Rimuovi piano",
+        "meal": "Rimuovi pasto",
+        "option": "Rimuovi opzione"
+      },
+      "store": {
+        "plan": "Salva piano"
+       }
     }
   }
 }

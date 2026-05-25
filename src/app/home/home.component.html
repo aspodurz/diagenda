@@ -1,6 +1,6 @@
 <div class="home-form">
     <div class="item-container">
-        <button mat-raised-button [routerLink]="['/viewer-component']" (click)="setTitle('app.viewer.title')" >{{ 'app.viewer.title' | translate }}</button>
+        <button mat-raised-button [routerLink]="['/plan-loader-component']" [queryParams]="{ mode: 'viewer' }" (click)="setTitle('app.viewer.title')" >{{ 'app.viewer.title' | translate }}</button>
     </div>
     <div class="item-container">
         <button mat-raised-button [routerLink]="['/configurer-component']" (click)="setTitle('app.configurer.title')" >{{ 'app.configurer.title' | translate }}</button>

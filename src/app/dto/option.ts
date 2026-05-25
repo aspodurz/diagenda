@@ -1,5 +1,5 @@
 export class OptionDto {
-    description?: string;
+    name?: string;
     
     constructor(){
     }

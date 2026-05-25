@@ -1,5 +1,5 @@
 import { AfterViewInit, Injectable, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { SecureStoreService } from './store.service';
 import { LanguageConstants, StoreConstants } from '../utils/constants.component';
 
@@ -51,4 +51,8 @@ export class BaseService implements OnInit {
       return await this.secureStore.getItemDefault(StoreConstants.LANGUAGE_KEY, LanguageConstants.EN);
   }
 
+  fixString(value: string): string {
+    return value.replaceAll('\\n', '').replaceAll('\\"','"').replaceAll('"{',"{").replaceAll('}"','}');
+  }
+  
 }

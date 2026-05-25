@@ -7,11 +7,10 @@ export class StoreConstants {
 
 
 export class PlannerConstants {
-  public static readonly STEP_TITLES: string[] = ['app.configurer.stepper.plan', 'app.configurer.stepper.meals', 'app.configurer.stepper.options', 'app.configurer.stepper.finish'];
+  public static readonly STEP_TITLES: string[] = ['app.configurer.stepper.plan', 'app.configurer.stepper.meals', 'app.configurer.stepper.end'];
   public static readonly PLAN_INDEX: number = 0;
   public static readonly MEALS_INDEX: number = 1;
-  public static readonly OPTIONS_INDEX: number = 2;
-  public static readonly FINISH_INDEX: number = 3;
+  public static readonly FINISH_INDEX: number = 2;
 }
 
 

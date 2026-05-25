@@ -12,7 +12,7 @@
       <mat-icon>home</mat-icon>
       <span>{{ 'app.home.title'| translate }}</span>
     </button>
-    <button mat-menu-item [routerLink]="['/viewer-component']" (click)="setTitle('app.viewer.title')" >
+    <button mat-menu-item [routerLink]="['/plan-loader-component']" [queryParams]="{ mode: 'viewer' }" (click)="setTitle('app.viewer.title')" >
       <mat-icon>view_list</mat-icon>
       <span>{{ 'app.viewer.title'| translate }}</span>
     </button>

@@ -11,13 +11,14 @@ import { PlanDto } from '../dto/plan';
 import { PlanStepper } from '../utils/stepper/plan.stepper';
 import { Plan } from './plan/plan';
 import { Meals } from './meals/meals';
+import { End } from './end/end';
+import { SecureStoreService } from '../service/store.service';
 
 
 @Component({
   selector: 'app-planner',
   standalone: true,
   imports: [
-    TranslatePipe,
     MatButtonModule,
     MatStepperModule,
     CdkStepperModule,
@@ -27,23 +28,30 @@ import { Meals } from './meals/meals';
     MatInputModule,
     PlanStepper,
     Plan,
-    Meals
+    Meals,  
+    End
   ],
   templateUrl: './planner.component.html',
   styleUrl: './planner.component.scss',
   providers: [CdkStepper] 
 })
 export class PlannerComponent {
-
-  readonly action: string;
   private route = inject(ActivatedRoute);
-  private _formBuilder = inject(FormBuilder);
+  private serviceStore= inject(SecureStoreService);
+  readonly mode: string;
+  
   plan: PlanDto=new PlanDto();
 
   isLinear = true;
 
   constructor() {
-    this.action = this.route.snapshot.queryParamMap.get('action') || '';
+    let plan = this.route.snapshot.queryParamMap.get('plan');
+    if(plan){
+      this.mode="edit";
+      this.serviceStore.getItem(plan).then((out) => { const res = JSON.parse(out); this.plan=res; });
+    }else{
+      this.mode="add";
+    }
   }
 
 }

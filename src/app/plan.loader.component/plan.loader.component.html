@@ -1,0 +1,10 @@
+<div class="plan-loader-component">
+    @for (elem of elements; track elem; let index = $index) {
+        <div class="item-container">
+            <button mat-raised-button [routerLink]="[selectRouterLink]" [queryParams]="{ plan: elem }">{{ elem }}</button>
+        </div>
+    }
+    <div class="item-container">
+        <button mat-raised-button [routerLink]="[backRouterLink]" (click)="setTitle(backTitle)">{{ 'app.button.back' | translate }}</button>
+    </div>
+</div>

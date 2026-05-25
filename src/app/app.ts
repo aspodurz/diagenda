@@ -12,16 +12,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { BaseService } from './service/base.service';
 import { SecureStoreService } from './service/store.service';
+import { TitleComponent } from './utils/title';
 
 @Component({
   selector: 'app-root',
-  //imports: [RouterOutlet, AsyncPipe],
-  imports: [TranslatePipe, TranslateDirective, CommonModule, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatMenuModule, MatIconModule,MatFormFieldModule,MatInputModule],
+  imports: [TranslatePipe, CommonModule, RouterOutlet, RouterLink, MatButtonModule, MatMenuModule, MatIconModule,MatFormFieldModule,MatInputModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
   providers: [SecureStoreService, BaseService] // <- add here!
 })
-export class App implements OnInit {
+export class App  extends TitleComponent implements OnInit{
   protected readonly name = signal('nome');
   protected readonly title = signal('diagenda');
   value$!: Promise<string>;
@@ -31,15 +31,14 @@ export class App implements OnInit {
   }
 
 
-  constructor(private storeService: SecureStoreService,private baseService: BaseService) { } 
+  constructor(private storeService: SecureStoreService) { 
+    super();
+  } 
 
   getTitle(){
     return this.baseService.getTitle();
   }
 
-  setTitle(item: string) {
-    this.baseService.setTitle(item);
-  }
 
   
 }
