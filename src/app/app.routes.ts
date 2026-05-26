@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { ConfigurerComponent } from './configurer/configurer.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { PlannerComponent } from './planner/planner.component';
-import { PlanLoaderComponent } from './plan.loader.component/plan.loader.component';
+import { PlanLoaderComponent } from './plan.loader/plan.loader.component';
 
 export const routes: Routes = [
     { path: 'home-component', component: HomeComponent },
