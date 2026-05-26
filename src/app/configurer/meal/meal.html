@@ -1,0 +1,54 @@
+<div ngAccordionGroup class="material-accordion meals-container" [multiExpandable]="true">
+  @for (meal of plan().meals; track meal; let idx = $index) {
+  <h3>
+    <div class="item-data-row">
+      <div class="item-data-label">
+        <mat-form-field class="meal-field">
+          <mat-label>{{ 'app.planner.meals.name' | translate }}</mat-label>
+          <input matInput placeholder="{{ 'app.planner.meals.ph.name' | translate }}" [(ngModel)]="meal.name" required>
+        </mat-form-field>
+        <button matIconButton (click)="deleteMeal(idx)" aria-label="{{ 'app.button.remove.meal' | translate }}">
+          <mat-icon>delete</mat-icon>
+        </button>
+        @if (meal.types.length === 1) {
+          <button matIconButton (click)="addSection(idx,0)" aria-label="{{ 'app.button.add.section' | translate }}">
+            <mat-icon>add</mat-icon>
+          </button>
+        }
+        <button matIconButton (click)="addType(idx)" aria-label="{{ 'app.button.add.type' | translate }}">
+          <mat-icon>add_box</mat-icon>
+        </button>
+      </div>
+      <div class="item-data-value">
+        <span ngAccordionTrigger [panel]="panel" [expanded]="true" #trigger="ngAccordionTrigger">
+          
+          @if (meal.types.length === 1) {
+            {{ meal.types.at(0)?.sections?.length }}
+          }
+          @else {
+            {{ meal.types.length }}
+          }
+          <span
+            aria-hidden="true"
+            class="material-symbols-outlined expand-icon"
+            [class.expand-icon__expanded]="trigger.expanded()"
+            translate="no"
+            >keyboard_arrow_up</span
+          >
+        </span>
+      </div>
+    </div>
+  </h3>
+  <div ngAccordionPanel #panel="ngAccordionPanel">
+    <ng-template ngAccordionContent>
+      <configurer-type [meal]="meal"></configurer-type>
+    </ng-template>
+  </div>
+    @if (idx+1 < plan().meals.length) {
+      <hr>
+    }
+  }
+  <div class="item-container">
+      <button mat-raised-button (click)="addMeal()" >{{ 'app.button.insert.meal' | translate }}</button>
+  </div>
+</div>

@@ -6,10 +6,12 @@ import { ConfigurerComponent } from './configurer/configurer.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { PlannerComponent } from './planner/planner.component';
 import { PlanLoaderComponent } from './plan.loader/plan.loader.component';
+import { ConfigurerMenuComponent } from './configurer.menu/configurer.menu.component';
 
 export const routes: Routes = [
     { path: 'home-component', component: HomeComponent },
     { path: 'viewer-component', component: ViewerComponent },
+    { path: 'configurer-menu-component', component: ConfigurerMenuComponent },
     { path: 'configurer-component', component: ConfigurerComponent },
     { path: 'plan-loader-component', component: PlanLoaderComponent },
     { path: 'planner-component', component: PlannerComponent},

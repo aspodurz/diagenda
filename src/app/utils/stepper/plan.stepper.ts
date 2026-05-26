@@ -1,9 +1,9 @@
 import { CdkStepper, CdkStepperModule } from "@angular/cdk/stepper";
 import { NgTemplateOutlet } from "@angular/common";
 import { Component, inject, input, Input } from "@angular/core";
-import {TranslatePipe} from "@ngx-translate/core";
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { TranslatePipe } from "@ngx-translate/core";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { PlanDto } from "../../dto/plan";
 import { PlannerConstants, StoreConstants } from "../constants.component";
 import { SecureStoreService } from '../../service/store.service';
@@ -50,7 +50,7 @@ export class PlanStepper extends CdkStepper {
   isNextDisabled(): boolean {
     let disabled = true;
     if(this.selectedIndex === PlannerConstants.PLAN_INDEX){
-      disabled = !(!!this.plan().name && !!this.plan().description && !!this.plan().owner);
+      disabled = !(!!this.plan().name && !!this.plan().description && !!this.plan().patient);
       if(!disabled && this.mode() === 'add'){
         const key=this.plan().name?? '';
         disabled = this.names.includes(key);
@@ -58,26 +58,36 @@ export class PlanStepper extends CdkStepper {
     }else if(this.selectedIndex === PlannerConstants.MEALS_INDEX){
       let mls: Array<string>=new Array<string>();
       for(let meal of this.plan().meals){
-        if(!meal.name || meal.options.length === 0){
+        if(!meal.name || meal.types.length === 0){
           return true;
-        }else {
-          if(!mls.includes(meal.name)){
-            mls.push(meal.name);
-          }else{
-            return true;
-          }
         }
-        let opts: Array<string>=new Array<string>();
-        for(let option of meal.options){ 
-          if(!option.name){
+        if(!mls.includes(meal.name)){
+          mls.push(meal.name);
+        }else{
+          return true;
+        }
+        for(let type of meal.types){
+          if(meal.types.length > 1 && (!type.name || type.sections.length === 0)){
             return true;
-          } else{
-            if(!opts.includes(option.name)){
-              opts.push(option.name);
-            }else{
-              return true;
-            } 
-          }
+          }else {
+            for(let section of type.sections){
+              if(!section.name || section.options.length === 0){
+                return true;
+              }
+              let opts: Array<string>=new Array<string>();
+              for(let option of section.options){ 
+                if(!option.name){
+                  return true;
+                } else{
+                  if(!opts.includes(option.name)){
+                    opts.push(option.name);
+                  }else{
+                    return true;
+                  } 
+                }
+              }
+            }
+          } 
         }
       }
       disabled = this.plan().meals.length === 0;

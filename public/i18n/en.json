@@ -17,28 +17,48 @@
       "title": "Planner",
       "name": "Name",
       "description": "Description",
-      "owner": "Owner",
+      "patient": "Patient",
       "ph": {
         "name": "Enter name",
         "description": "Enter description",
-        "owner": "Enter owner"
+        "patient": "Enter patient"
       },
       "meals": {
-        "name": "Name",
+        "name": "Meal",
+        "types": "Types",
+        "sections": "Sections",
         "options": "Options",
         "ph": {
-          "name": "Enter name"
+          "name": "Enter meal",
+          "types": "Enter type"
+        },
+        "type": {
+          "name": "Type",
+          "ph": {
+            "name": "Enter type"
+          }
+        },
+        "section": {
+          "name": "Section",
+          "ph": {
+            "name": "Enter section"
+          }
         },
         "option": {
-          "name": "Name",
+          "name": "Option",
           "ph": {
-            "name": "Enter name"
+            "name": "Enter option"
           }
         }
       }
     },
     "viewer": {
-      "title": "Viewer"
+      "title": "Viewer",
+      "plan": {
+        "name": "Name",
+        "description": "Description",
+        "patient": "Patient"
+      }
     },
     "setting": {
       "title": "Setting",
@@ -63,14 +83,17 @@
       "ok": "Ok",
       "close": "Close",
       "back": "Back",
+      "home": "Home",
       "insert": {
         "plan": "Insert plan",
         "meal": "Insert meal",
+        "section": "Insert section",
         "option": "Insert option"
       },
       "remove": {
         "plan": "Remove plan",
         "meal": "Remove meal",
+        "section": "Remove section",
         "option": "Remove option"
       },
       "store": {

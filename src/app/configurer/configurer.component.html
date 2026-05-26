@@ -1,9 +1,8 @@
-<form class="configurer-form">
-    <div class="item-container">
-        <button mat-raised-button [routerLink]="['/planner-component']">{{ 'app.button.add' | translate }}</button>
-    </div>
-    <div class="item-container">
-        <button mat-raised-button [routerLink]="['/plan-loader-component']" [queryParams]="{ mode: 'configurer' }">{{ 'app.button.edit' | translate }}</button>
-    </div>
-</form>
+<div class="configurer-component">
+  <plan-stepper [plan]="plan" [mode]="mode">
+    <cdk-step> <configurer-plan [plan]="plan" [mode]="mode" > </configurer-plan> </cdk-step>
+    <cdk-step> <configurer-meal [plan]="plan" > </configurer-meal> </cdk-step>
+    <cdk-step> <configurer-end [plan]="plan" > </configurer-end> </cdk-step>
+  </plan-stepper>
+</div>
 

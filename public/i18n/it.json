@@ -17,28 +17,48 @@
       "title": "Planner",
       "name": "Nome",
       "description": "Descrizione",
-      "owner": "Proprietario",
+      "patient": "Paziente",
       "ph": {
         "name": "Inserisci nome",
         "description": "Inserisci descrizione",
-        "owner": "Inserisci proprietario"
+        "patient": "Inserisci paziente"
       },
       "meals": {
-        "name": "Nome",
+        "name": "Pasto",
+        "types": "Tipo",
+        "sections": "Sezioni",
         "options": "Opzioni",
         "ph": {
-          "name": "Inserisci nome"
+          "name": "Inserisci pasto",
+          "type": "Inserisci tipo"
+        },
+        "type": {
+          "name": "Tipo",
+          "ph": {
+            "name": "Enter tipo"
+          }
+        },
+        "section": {
+          "name": "Sezione",
+          "ph": {
+            "name": "Inserisci sezione"
+          }
         },
         "option": {
-          "name": "Nome",
+          "name": "Opzione",
           "ph": {
-            "name": "Inserisci nome"
+            "name": "Inserisci opzione"
           }
         }
       }
     },
     "viewer": {
-      "title": "Visualizzatore"
+      "title": "Visualizzatore", 
+      "plan": {
+        "name": "Nome",
+        "description": "Descrizione",
+        "patient": "Paziente"
+      }
     },
     "setting": {
       "title": "Impostazioni",
@@ -63,14 +83,17 @@
       "ok": "Ok",
       "close": "Chiudi",
       "back": "Indietro",
+      "home": "Home",
       "insert": {
         "plan": "Inserisci piano",
         "meal": "Inserisci pasto",
+        "section": "Inserisci sezione",
         "option": "Inserisci opzione"
       },
       "remove": {
         "plan": "Rimuovi piano",
         "meal": "Rimuovi pasto",
+        "section": "Rimuovi sezione",
         "option": "Rimuovi opzione"
       },
       "store": {

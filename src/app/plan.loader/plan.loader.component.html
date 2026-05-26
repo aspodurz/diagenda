@@ -1,10 +1,13 @@
-<div class="plan-loader-component">
+<mat-action-list class="plan-loader-component">
     @for (elem of elements; track elem; let index = $index) {
         <div class="item-container">
-            <button mat-raised-button [routerLink]="[selectRouterLink]" [queryParams]="{ plan: elem }">{{ elem }}</button>
+            <button mat-list-item [routerLink]="[selectRouterLink]" [queryParams]="{ plan: elem }">{{ elem }}</button>
         </div>
+        @if (index < elements.length - 1) {
+            <mat-divider></mat-divider>
+        }
     }
     <div class="item-container">
         <button mat-raised-button [routerLink]="[backRouterLink]" (click)="setTitle(backTitle)">{{ 'app.button.back' | translate }}</button>
     </div>
-</div>
+</mat-action-list>

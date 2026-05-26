@@ -1,0 +1,37 @@
+<div ngAccordionGroup class="material-accordion meals-container" [multiExpandable]="true">
+    @for (section of type().sections; track section; let idx = $index) {
+    <h3>
+      <div class="item-data-row">
+        <div class="item-data-label">
+          <mat-form-field class="meal-field">
+            <mat-label>{{ 'app.planner.meals.section.name' | translate }}</mat-label>
+            <input matInput placeholder="{{ 'app.planner.meals.section.ph.name' | translate }}" [(ngModel)]="section.name" required>
+          </mat-form-field>
+          <button matIconButton (click)="deleteSection(idx)" aria-label="{{ 'app.button.remove.section' | translate }}">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button matIconButton (click)="addOption(idx)" aria-label="{{ 'app.button.add.section' | translate }}">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div class="item-data-value">
+          <span ngAccordionTrigger [panel]="panel" [expanded]="true" #trigger="ngAccordionTrigger">
+              {{ section.options.length }}
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined expand-icon"
+              [class.expand-icon__expanded]="trigger.expanded()"
+              translate="no"
+              >keyboard_arrow_up</span
+            >
+          </span>
+        </div>
+      </div>
+    </h3>
+    <div ngAccordionPanel #panel="ngAccordionPanel">
+      <ng-template ngAccordionContent>
+        <configurer-option [section]="section"></configurer-option>
+      </ng-template>
+    </div>
+  }
+</div>

@@ -1,0 +1,14 @@
+
+  @for (option of section().options; track option; let idx = $index) {
+  <div class="item-container">
+    <mat-form-field class="option-field">
+      <mat-label>{{ 'app.planner.meals.option.name' | translate }}</mat-label>
+      <textarea matInput placeholder="{{ 'app.planner.meals.option.ph.name' | translate }}" [(ngModel)]="option.name" required>
+      </textarea>
+    </mat-form-field>
+  
+    <button matIconButton (click)="deleteOption(idx)" aria-label="{{ 'app.button.remove.option' | translate }}">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  }

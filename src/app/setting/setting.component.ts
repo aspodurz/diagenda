@@ -76,7 +76,6 @@ export class SettingComponent implements AfterViewInit {
         if(res.elements.length>0){
           await this.storeService.clear();
           let config: ConfigurationDto=new ConfigurationDto();
-          await this.storeService.clear();
           for(let i=0; i<res.elements.length; i++){
             let plan:PlanDto= res.elements.at(i);
             const pdata=JSON.stringify(plan, null, 2);

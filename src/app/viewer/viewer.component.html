@@ -1,4 +1,42 @@
-<form class="viewer-form">
-    {{ 'app.title' | translate }} {{ 'app.version' | translate }}
-</form>
+<div class="viewer-container">
+    <div class="item-data-row">
+        <div class="item-data-label">{{ 'app.viewer.plan.name' | translate }}</div>
+        <div class="item-data-value">{{ plan.name }}</div>
+        <div class="item-data-label">{{ 'app.viewer.plan.description' | translate }}</div>
+        <div class="item-data-value">{{ plan.description }}</div>
+    </div>
+    <div class="item-data-row">
+        <div class="item-data-label">{{ 'app.viewer.plan.patient' | translate }}</div>
+        <div class="item-data-value">{{ plan.patient }}</div>
+        <div class="item-data-label"></div>
+        <div class="item-data-value"></div>
+    </div>
 
+    <mat-tab-group>
+        @for (meal of plan.meals; track meal; let midx = $index) {
+            <mat-tab label="{{ meal.name }}">
+                <mat-action-list class="plan-loader-component">
+                    @for (type of meal.types; track type; let tidx = $index) {
+                        @for (section of type.sections; track section; let sidx = $index) {
+                            <div class="section-container">
+                                <p>{{ section.name }}</p>
+                            </div>
+                            <ul>
+                                @for (option of section.options; track option; let oidx = $index) {
+                                    <li>{{ option.name }}</li>
+                                }
+                            </ul>
+                            @if (tidx < meal.types.length - 1) {
+                                <mat-divider></mat-divider>
+                            }
+                        }
+                    }
+                </mat-action-list>
+            </mat-tab>
+        }
+    </mat-tab-group>
+
+    <div class="item-container">
+        <button mat-raised-button [routerLink]="['/home-component']">{{ 'app.button.home' | translate }}</button>
+    </div>
+</div>

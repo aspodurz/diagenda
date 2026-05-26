@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import {MatTableModule} from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
 import { SecureStoreService } from '../service/store.service';
 import { ConfigurationDto } from '../dto/configuration';
 import { StoreConstants } from '../utils/constants.component';
@@ -11,7 +12,7 @@ import { TitleComponent } from '../utils/title';
 
 @Component({
   selector: 'app-plan.loader.component',
-  imports: [TranslatePipe, MatButtonModule, RouterLink, MatTableModule],
+  imports: [TranslatePipe, MatButtonModule, RouterLink, MatTableModule, MatListModule],
   templateUrl: './plan.loader.component.html',
   styleUrl: './plan.loader.component.css',
 })
@@ -34,8 +35,8 @@ export class PlanLoaderComponent extends TitleComponent {
 
       let mode = this.route.snapshot.queryParamMap.get('mode');
       if(mode === 'configurer'){
-        this.selectRouterLink = '/planner-component';
-        this.backRouterLink = '/configurer-component';
+        this.selectRouterLink = '/configurer-component';
+        this.backRouterLink = '/configurer-menu-component';
         this.backTitle = 'app.configurer.title';
       }else if(mode === 'viewer'){
         this.selectRouterLink = '/viewer-component';

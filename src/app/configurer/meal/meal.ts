@@ -13,25 +13,25 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { MealDto, PlanDto, SectionDto, TypeDto } from '../../dto/plan';
-import { OptionDto } from '../../dto/option';
+import { Type } from '../type/type'; 
 
 
 
 
 @Component({
-  selector: 'planner-meals',
-  imports: [TranslatePipe, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDividerModule, FormsModule, AccordionGroup, AccordionTrigger, AccordionPanel, AccordionContent],
-  templateUrl: './meals.html',
-  styleUrl: './meals.css',
+  selector: 'configurer-meal',
+  imports: [TranslatePipe, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDividerModule, FormsModule, AccordionGroup, AccordionTrigger, AccordionPanel, AccordionContent, Type],
+  templateUrl: './meal.html',
+  styleUrl: './meal.css',
 })
-export class Meals {
+export class Meal {
   plan = input.required<PlanDto>();
 
   addMeal(): void {
     this.plan().add(new MealDto());
     this.plan().meals[this.plan().meals.length-1].add(new TypeDto());
   }
-
+  
   addType(midx:number): void {
     this.plan().meals[midx].types.push(new TypeDto());
   }
@@ -40,31 +40,8 @@ export class Meals {
     this.plan().meals[midx].types[tidx].sections.push(new SectionDto());
   }
 
-  addOption(midx:number, tidx:number, sidx:number): void {
-    this.plan().meals[midx].types[tidx].sections[sidx].options.push(new OptionDto());
-  }
-
   deleteMeal(index:number): void {
     this.plan().meals.splice(index, 1);
   }
 
-  deleteType(midx:number, tidx:number): void {
-    this.plan().meals[midx].types.splice(tidx, 1);
-  }
-
-  deleteSection(midx:number, tidx:number, sidx:number): void {
-    this.plan().meals[midx].types[tidx].sections.splice(sidx, 1);
-  } 
-
-  deleteOption(midx:number, tidx:number, sidx:number, oidx:number): void {
-    this.plan().meals[midx].types[tidx].sections[sidx].options.splice(oidx, 1);
-  }
-
-  expand(event: any): void {
-         if (event.style.display === "block") {
-           event.style.display = "none";
-       } else {
-             event.style.display = "block";
-        }  
-    }
 }
