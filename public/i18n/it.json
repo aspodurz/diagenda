@@ -34,14 +34,20 @@
         },
         "type": {
           "name": "Tipo",
+          "description": "Descrizione",
+          "note": "Note",
           "ph": {
-            "name": "Enter tipo"
+            "name": "Inserisci tipo",
+            "description": "Inserisci descrizione",
+            "note": "Inserisci note"
           }
         },
         "section": {
           "name": "Sezione",
+          "note": "Note",
           "ph": {
-            "name": "Inserisci sezione"
+            "name": "Inserisci sezione",
+            "note": "Inserisci note"
           }
         },
         "option": {

@@ -16,21 +16,57 @@
         @for (meal of plan.meals; track meal; let midx = $index) {
             <mat-tab label="{{ meal.name }}">
                 <mat-action-list class="plan-loader-component">
-                    @for (type of meal.types; track type; let tidx = $index) {
-                        @for (section of type.sections; track section; let sidx = $index) {
+                    @if (meal.types.length > 1) {
+                        <mat-tab-group>
+                        @for (type of meal.types; track type; let tidx = $index) {
+                            <mat-tab label="{{ type.name }}">
                             <div class="section-container">
-                                <p>{{ section.name }}</p>
+                                <p>{{ type.description }}</p>
                             </div>
-                            <ul>
-                                @for (option of section.options; track option; let oidx = $index) {
-                                    <li>{{ option.name }}</li>
+                            @for (section of type.sections; track section; let sidx = $index) {
+                                <div class="section-container">
+                                    <p>{{ section.name }}</p>
+                                </div>
+                                <ul>
+                                    @for (option of section.options; track option; let oidx = $index) {
+                                        <li>{{ option.name }}</li>
+                                    }
+                                </ul>
+                                <div class="section-container">
+                                    <p>{{ section.note }}</p>
+                                </div>
+                                @if (tidx < meal.types.length - 1) {
+                                    <mat-divider></mat-divider>
                                 }
-                            </ul>
-                            @if (tidx < meal.types.length - 1) {
-                                <mat-divider></mat-divider>
+                            }
+                            <div class="section-container">
+                                <p>{{ type.note }}</p>
+                            </div>
+                            </mat-tab>
+                        }
+                        </mat-tab-group>
+                    } @else {
+                        @for (type of meal.types; track type; let tidx = $index) {
+                            @for (section of type.sections; track section; let sidx = $index) {
+                                <div class="section-container">
+                                    <p>{{ section.name }}</p>
+                                </div>
+                                <ul>
+                                    @for (option of section.options; track option; let oidx = $index) {
+                                        <li>{{ option.name }}</li>
+                                    }
+                                </ul>
+                                <div class="section-container">
+                                    <p>{{ section.note }}</p>
+                                </div>
+                                @if (tidx < meal.types.length - 1) {
+                                    <mat-divider></mat-divider>
+                                }
                             }
                         }
+                        
                     }
+                    
                 </mat-action-list>
             </mat-tab>
         }

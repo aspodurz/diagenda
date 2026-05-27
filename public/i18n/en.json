@@ -34,14 +34,20 @@
         },
         "type": {
           "name": "Type",
+          "description": "Description",
+          "note": "Note",
           "ph": {
-            "name": "Enter type"
+            "name": "Enter type",
+            "description": "Enter description",
+            "note": "Enter note"
           }
         },
         "section": {
           "name": "Section",
+          "note": "Note",
           "ph": {
-            "name": "Enter section"
+            "name": "Enter section",
+            "note": "Enter note"
           }
         },
         "option": {

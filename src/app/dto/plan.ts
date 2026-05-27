@@ -31,7 +31,9 @@ export class MealDto{
 
 export class TypeDto{
     name?: string;
+    description?: string;
     sections: Array<SectionDto>=new Array;
+    note?: string;
     constructor(){
 
     }

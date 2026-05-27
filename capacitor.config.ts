@@ -3,7 +3,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'net.spx.app',
   appName: 'diagenda',
-  webDir: 'dist'
+  webDir: 'dist/diagenda/browser',
 };
 
 export default config;

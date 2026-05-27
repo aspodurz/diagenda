@@ -3,7 +3,7 @@
     <h3>
       <div class="item-data-row">
         <div class="item-data-label">
-          <mat-form-field class="meal-field">
+          <mat-form-field class="section-field">
             <mat-label>{{ 'app.planner.meals.section.name' | translate }}</mat-label>
             <input matInput placeholder="{{ 'app.planner.meals.section.ph.name' | translate }}" [(ngModel)]="section.name" required>
           </mat-form-field>
@@ -32,6 +32,14 @@
       <ng-template ngAccordionContent>
         <configurer-option [section]="section"></configurer-option>
       </ng-template>
+      <div class="item-data-row">
+          <div class="item-data-label">
+            <mat-form-field class="section-field">
+              <mat-label>{{ 'app.planner.meals.section.note' | translate }}</mat-label>
+              <textarea matInput placeholder="{{ 'app.planner.meals.section.ph.note' | translate }}" [(ngModel)]="section.note"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
     </div>
   }
 </div>

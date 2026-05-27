@@ -6,7 +6,7 @@
     <h3>
       <div class="item-data-row">
         <div class="item-data-label">
-          <mat-form-field class="meal-field">
+          <mat-form-field class="type-field">
             <mat-label>{{ 'app.planner.meals.type.name' | translate }}</mat-label>
             <input matInput placeholder="{{ 'app.planner.meals.type.ph.name' | translate }}" [(ngModel)]="type.name" required>
           </mat-form-field>
@@ -33,7 +33,23 @@
     </h3>
     <div ngAccordionPanel #panel="ngAccordionPanel">
       <ng-template ngAccordionContent>
-        <configurer-section [type]="type"></configurer-section>  
+        <div class="item-data-row">
+          <div class="item-data-label">
+            <mat-form-field class="type-field">
+              <mat-label>{{ 'app.planner.meals.type.description' | translate }}</mat-label>
+              <input matInput placeholder="{{ 'app.planner.meals.type.ph.description' | translate }}" [(ngModel)]="type.description">
+            </mat-form-field>
+          </div>
+        </div>
+        <configurer-section [type]="type"></configurer-section> 
+              <div class="item-data-row">
+          <div class="item-data-label">
+            <mat-form-field class="section-field">
+              <mat-label>{{ 'app.planner.meals.type.note' | translate }}</mat-label>
+              <textarea matInput placeholder="{{ 'app.planner.meals.type.ph.note' | translate }}" [(ngModel)]="type.note"></textarea>
+            </mat-form-field>
+          </div>
+        </div> 
       </ng-template>
     </div>
     }
